@@ -1,0 +1,3 @@
+<imports>
+  <package name="ext.callMethodFromDifferentLocations" path="callMethodFromDifferentLocations\Import" />
+</imports>

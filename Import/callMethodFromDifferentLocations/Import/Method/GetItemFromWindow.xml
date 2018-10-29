@@ -1,0 +1,31 @@
+﻿<AML>
+ <Item type="Method" id="A48A7F13821841D48C283B367FDBD015" action="add">
+  <execution_allowed_to keyed_name="World" type="Identity">A73B655731924CD0B027E4F4D5FCC0A9</execution_allowed_to>
+  <method_code><![CDATA[var win = inArgs.contextWindow;
+var contextArgs = inArgs.contextArgs;
+var itm = null;
+
+// The inArgs of the calling method only contain a control if it's from a CUI button
+if (contextArgs && contextArgs.control) {
+    var inn = this.getInnovator();
+    var id = null;
+    var topWindow = aras.getMostTopWindowWithAras(win);
+    if (topWindow.work && topWindow.work.grid) 
+    { 
+        // in case Method is triggered from Main-Window
+        var workFrame = topWindow.work; 
+        id = workFrame.grid.getSelectedID();
+    } else {
+        // in case Method is triggered from Tearoff Window
+        id = thisItem.getID();
+    }
+    var itm = inn.getItemById("Part", id);
+
+} else {
+    var itm =  this || thisItem;
+}
+return itm;]]></method_code>
+  <method_type>JavaScript</method_type>
+  <name>GetItemFromWindow</name>
+ </Item>
+</AML>
